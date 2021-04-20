@@ -1,4 +1,5 @@
-import { Component, Host, h, State, Prop, getAssetPath, EventEmitter, Event } from '@stencil/core';
+import { Component, Host, h, State, Prop, getAssetPath, EventEmitter, Event, Listen } from '@stencil/core';
+import TwilioDevice from '../../twilio';
 
 function formatTime(time) {
   return time <= 9 ? `0${time}` : time;
@@ -8,15 +9,12 @@ function formatTime(time) {
   tag: 'tw-caller',
   styleUrl: 'tw-caller.css',
   shadow: true,
-  assetsDirs: [
-    'assets'
-  ]
+  assetsDirs: ['assets'],
 })
 export class TwCaller {
-
   // state
   @State()
-  callStatus = ""
+  callStatus = '';
 
   @State()
   isOpen = false;
@@ -24,50 +22,53 @@ export class TwCaller {
   @State()
   callTime = 0;
 
-
   @Event()
   opened: EventEmitter;
-  @Event() closed: EventEmitter;
+  @Event()
+  closed: EventEmitter;
 
   // props
   @Prop({
     mutable: true,
-    reflect:true
+    reflect: true,
   })
-  avatarSrc = "https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png";
+  avatarSrc = 'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png';
+
+  @Prop({
+    mutable: true,
+    reflect: true,
+  })
+  calleName = 'The Company';
 
   @Prop({
     mutable: true,
     reflect: true
   })
-  calleName = "The Company";
+  calleNumber = "+917676424299";
 
   @Prop({
     mutable: true,
-    reflect: true
+    reflect: true,
   })
-  callEndpoint = "";
+  callEndpoint = '';
 
   @Prop({
     mutable: true,
-    reflect: true
+    reflect: true,
   })
   hideCloseBtn = false;
 
   @Prop({
     mutable: true,
-    reflect: true
+    reflect: true,
   })
-  btnText = "Call Us Now!"
-
-
-
+  btnText = 'Call Us Now!';
 
   // methods
   open = () => {
     this.isOpen = true;
     this.opened.emit();
-    this.startCall()
+    this.startCall();
   };
 
   close = () => {
@@ -77,27 +78,49 @@ export class TwCaller {
   };
 
   timeIntervalId;
+  twilio: TwilioDevice;
+  async startCall() {
 
-  startCall() {
+    this.twilio = new TwilioDevice();
+    await this.twilio.init();
+    console.log(this.calleNumber);
+    this.twilio.callNumber(this.calleNumber);
+
+    this.twilio.device.activeConnection().on('disconnect', () => {
+      console.log("the call has ended");
+      this.close();
+    });
+
     const startedAt = Date.now();
-
     this.timeIntervalId = setInterval(() => {
       this.callTime = Date.now() - startedAt;
-    }, 1000)
+    }, 1000);
   }
 
   endCall() {
     clearInterval(this.timeIntervalId);
     this.callTime = 0;
+
+    this.twilio.hangUp();
+
+  }
+
+  @Listen('keydown')
+  handleEscape(ev: KeyboardEvent) {
+    if (ev.key == 'Escape') {
+      this.close();
+    }
   }
 
   render() {
+    console.log(this.calleNumber);
+
     const time = new Date(this.callTime);
-    const minutes = formatTime(time.getUTCMinutes())
+    const minutes = formatTime(time.getUTCMinutes());
     const seconds = formatTime(time.getUTCSeconds());
     return (
       <Host>
-             <div class="container">
+        <div class="container">
           <div class={`modal ${this.isOpen ? 'modal--show' : ''}`}>
             {!this.hideCloseBtn && (
               <div data-id="close-btn" class="close-modal" onClick={this.close}>
@@ -113,7 +136,9 @@ export class TwCaller {
               </div>
               <div class="content_body">
                 <div class="call-time">
-                  {minutes }<span class="blink">:</span>{seconds}
+                  {minutes}
+                  <span class="blink">:</span>
+                  {seconds}
                 </div>
                 <div>{this.callStatus}</div>
               </div>
@@ -137,7 +162,4 @@ export class TwCaller {
       </Host>
     );
   }
-
 }
-
-

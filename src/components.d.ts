@@ -11,6 +11,7 @@ export namespace Components {
         "btnText": string;
         "callEndpoint": string;
         "calleName": string;
+        "calleNumber": string;
         "hideCloseBtn": boolean;
     }
 }
@@ -31,6 +32,7 @@ declare namespace LocalJSX {
         "btnText"?: string;
         "callEndpoint"?: string;
         "calleName"?: string;
+        "calleNumber"?: string;
         "hideCloseBtn"?: boolean;
         "onClosed"?: (event: CustomEvent<any>) => void;
         "onOpened"?: (event: CustomEvent<any>) => void;

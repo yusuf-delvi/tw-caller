@@ -7,12 +7,6 @@ describe('tw-caller', () => {
       components: [TwCaller],
       html: `<tw-caller></tw-caller>`,
     });
-    expect(page.root).toEqualHtml(`
-      <tw-caller>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </tw-caller>
-    `);
+    expect(page.root).toMatchInlineSnapshot();
   });
 });
