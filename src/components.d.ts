@@ -6,56 +6,44 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface TwCaller {
+        "avatarSrc": string;
+        "btnText": string;
+        "callEndpoint": string;
+        "calleName": string;
+        "hideCloseBtn": boolean;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLTwCallerElement extends Components.TwCaller, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLTwCallerElement: {
+        prototype: HTMLTwCallerElement;
+        new (): HTMLTwCallerElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "tw-caller": HTMLTwCallerElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface TwCaller {
+        "avatarSrc"?: string;
+        "btnText"?: string;
+        "callEndpoint"?: string;
+        "calleName"?: string;
+        "hideCloseBtn"?: boolean;
+        "onClosed"?: (event: CustomEvent<any>) => void;
+        "onOpened"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "tw-caller": TwCaller;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "tw-caller": LocalJSX.TwCaller & JSXBase.HTMLAttributes<HTMLTwCallerElement>;
         }
     }
 }
