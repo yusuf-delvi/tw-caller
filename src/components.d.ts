@@ -6,6 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CallDialog {
+        "callDuration": number;
+        "isOpen": boolean;
+        "logoSrc": string;
+    }
     interface TwCaller {
         "avatarSrc": string;
         "btnText": string;
@@ -14,6 +19,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCallDialogElement extends Components.CallDialog, HTMLStencilElement {
+    }
+    var HTMLCallDialogElement: {
+        prototype: HTMLCallDialogElement;
+        new (): HTMLCallDialogElement;
+    };
     interface HTMLTwCallerElement extends Components.TwCaller, HTMLStencilElement {
     }
     var HTMLTwCallerElement: {
@@ -21,10 +32,17 @@ declare global {
         new (): HTMLTwCallerElement;
     };
     interface HTMLElementTagNameMap {
+        "call-dialog": HTMLCallDialogElement;
         "tw-caller": HTMLTwCallerElement;
     }
 }
 declare namespace LocalJSX {
+    interface CallDialog {
+        "callDuration"?: number;
+        "isOpen"?: boolean;
+        "logoSrc"?: string;
+        "onClose"?: (event: CustomEvent<any>) => void;
+    }
     interface TwCaller {
         "avatarSrc"?: string;
         "btnText"?: string;
@@ -34,6 +52,7 @@ declare namespace LocalJSX {
         "onOpened"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
+        "call-dialog": CallDialog;
         "tw-caller": TwCaller;
     }
 }
@@ -41,6 +60,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "call-dialog": LocalJSX.CallDialog & JSXBase.HTMLAttributes<HTMLCallDialogElement>;
             "tw-caller": LocalJSX.TwCaller & JSXBase.HTMLAttributes<HTMLTwCallerElement>;
         }
     }
