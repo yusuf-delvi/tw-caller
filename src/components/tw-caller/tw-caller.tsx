@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, getAssetPath, EventEmitter, Event, Listen } from '@stencil/core';
+import { Component, Host, h, State, Prop, EventEmitter, Event, Listen } from '@stencil/core';
 import TwilioDevice from '../../twilio';
 
 function formatTime(time) {
@@ -103,7 +103,7 @@ export class TwCaller {
                 <div class="time">
                   {minutes} <span class="blink">:</span> {seconds}
                 </div>
-                <div class="text">Call duration</div>
+                <div class="text">Call Duration</div>
               </div>
               <div class="call-options">
                 <div class="call-end" onClick={this.close}>
