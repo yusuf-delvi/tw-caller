@@ -9,6 +9,10 @@
     <script nomodule src="/build/tw-caller.js"></script>
   </head>
   <body>
-    <tw-caller btn-text="Call Now!"> </tw-caller>
+    <tw-caller>
+      <div slot="call-btn">
+        <call-btn />
+      </div>
+    </tw-caller>
   </body>
 </html>

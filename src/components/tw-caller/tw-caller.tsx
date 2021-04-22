@@ -87,9 +87,9 @@ export class TwCaller {
       <Host>
         <div class="container">
           <call-dialog isOpen={this.isOpen} callDuration={this.callTime} onClose={this.close} />
-          <div data-id="open-btn" onClick={this.open}>
-            <slot name="open-btn">
-              <button class="btn btn--open">{this.btnText}</button>
+          <div onClick={this.open}>
+            <slot name="call-btn">
+              <call-btn />
             </slot>
           </div>
         </div>
