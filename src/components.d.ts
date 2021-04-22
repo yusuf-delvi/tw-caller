@@ -7,7 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CallBtn {
+        "bgColor": string;
+        "borderColor": string;
+        "font": "Arial" | "Georgia" | "Helvetica" | "Verdana" | "Open Sans" | "Roboto";
+        "fontSize": string;
+        "fontWeight": "normal" | "bold" | "bolder";
+        "opacity": string;
+        "rounded": boolean;
         "text": string;
+        "textColor": string;
     }
     interface CallDialog {
         "callDuration": number;
@@ -48,7 +56,15 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CallBtn {
+        "bgColor"?: string;
+        "borderColor"?: string;
+        "font"?: "Arial" | "Georgia" | "Helvetica" | "Verdana" | "Open Sans" | "Roboto";
+        "fontSize"?: string;
+        "fontWeight"?: "normal" | "bold" | "bolder";
+        "opacity"?: string;
+        "rounded"?: boolean;
         "text"?: string;
+        "textColor"?: string;
     }
     interface CallDialog {
         "callDuration"?: number;
