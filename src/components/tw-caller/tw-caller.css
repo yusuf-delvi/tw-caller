@@ -79,16 +79,63 @@
 }
 
 .btn {
-  display: block;
-  color: var(--text-color);
-  border: 3px solid var(--border-color);
-  text-transform: uppercase;
-  font-weight: bold;
-  background: var(--button-bg);
+  display: inline-block;
+  height: 44px;
+  width: 220px;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 6px;
-  outline: 0;
+  border: 0;
+  background: #00d200;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+}
+
+.btn:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -200%;
+  right: -25%;
+  width: 150%;
+  height: 500%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
+  opacity: 0;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  30% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.btn:not(:active):after {
+  animation: ripple 2s ease-out;
+}
+
+/* fixes initial animation run, without user input, on page load.
+ */
+button:after {
+  visibility: hidden;
+}
+
+button:focus:after {
+  visibility: visible;
 }
 
 .logo {
