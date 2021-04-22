@@ -26,7 +26,7 @@ export class TwCaller {
 
   // props
   @Prop()
-  avatarSrc = 'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png';
+  logoSrc = 'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png';
 
   @Prop()
   calleNumber = '+917676424299';
@@ -86,7 +86,7 @@ export class TwCaller {
     return (
       <Host>
         <div class="container">
-          <call-dialog isOpen={this.isOpen} callDuration={this.callTime} onClose={this.close} />
+          <call-dialog logoSrc={this.logoSrc} isOpen={this.isOpen} callDuration={this.callTime} onClose={this.close} />
           <div onClick={this.open}>
             <slot name="call-btn">
               <call-btn />

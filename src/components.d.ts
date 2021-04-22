@@ -15,10 +15,10 @@ export namespace Components {
         "logoSrc": string;
     }
     interface TwCaller {
-        "avatarSrc": string;
         "btnText": string;
         "callEndpoint": string;
         "calleNumber": string;
+        "logoSrc": string;
     }
 }
 declare global {
@@ -57,10 +57,10 @@ declare namespace LocalJSX {
         "onClose"?: (event: CustomEvent<any>) => void;
     }
     interface TwCaller {
-        "avatarSrc"?: string;
         "btnText"?: string;
         "callEndpoint"?: string;
         "calleNumber"?: string;
+        "logoSrc"?: string;
         "onClosed"?: (event: CustomEvent<any>) => void;
         "onOpened"?: (event: CustomEvent<any>) => void;
     }
