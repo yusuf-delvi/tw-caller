@@ -28,40 +28,16 @@ export class TwCaller {
   closed: EventEmitter;
 
   // props
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
+  @Prop()
   avatarSrc = 'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png';
 
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
-  calleName = 'The Company';
+  @Prop()
+  calleNumber = '+917676424299';
 
-  @Prop({
-    mutable: true,
-    reflect: true
-  })
-  calleNumber = "+917676424299";
-
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
+  @Prop()
   callEndpoint = '';
 
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
-  hideCloseBtn = false;
-
-  @Prop({
-    mutable: true,
-    reflect: true,
-  })
+  @Prop()
   btnText = 'Call Us Now!';
 
   // methods
@@ -80,14 +56,13 @@ export class TwCaller {
   timeIntervalId;
   twilio: TwilioDevice;
   async startCall() {
-
     this.twilio = new TwilioDevice();
     await this.twilio.init();
     console.log(this.calleNumber);
     this.twilio.callNumber(this.calleNumber);
 
     this.twilio.device.activeConnection().on('disconnect', () => {
-      console.log("the call has ended");
+      console.log('the call has ended');
       this.close();
     });
 
@@ -102,7 +77,6 @@ export class TwCaller {
     this.callTime = 0;
 
     this.twilio.hangUp();
-
   }
 
   @Listen('keydown')
@@ -113,8 +87,6 @@ export class TwCaller {
   }
 
   render() {
-    console.log(this.calleNumber);
-
     const time = new Date(this.callTime);
     const minutes = formatTime(time.getUTCMinutes());
     const seconds = formatTime(time.getUTCSeconds());
@@ -122,32 +94,33 @@ export class TwCaller {
       <Host>
         <div class="container">
           <div class={`modal ${this.isOpen ? 'modal--show' : ''}`}>
-            {!this.hideCloseBtn && (
-              <div data-id="close-btn" class="close-modal" onClick={this.close}>
-                <span>&times;</span>
-              </div>
-            )}
             <div data-id="content" class="modal__content">
-              <div class="content_header">
+              <div class="logo">
                 <img src={this.avatarSrc} />
-                <div>
-                  <h3>{this.calleName}</h3>
-                </div>
+                <span class="status-online"></span>
               </div>
-              <div class="content_body">
-                <div class="call-time">
-                  {minutes}
-                  <span class="blink">:</span>
-                  {seconds}
+              <div class="timer">
+                <div class="time">
+                  {minutes} <span class="blink">:</span> {seconds}
                 </div>
-                <div>{this.callStatus}</div>
+                <div class="text">Call duration</div>
               </div>
-              <div class="content_footer">
-                {/* <div class="call-mute" title={this.muted ? 'Unmute' : 'Mute'} onClick={this.toggleMute}>
-                  <img src={getAssetPath(`./assets/${this.muted ? 'mute-' : ''}microphone.png`)} />
-                </div> */}
-                <div onClick={this.close} title="End call" class="call-end">
-                  <img src={getAssetPath(`./assets/hang-up.png`)} />
+              <div class="call-options">
+                <div class="call-end" onClick={this.close}>
+                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M25 0C38.8069 0 50 11.1927 50 25C50 38.8073 38.8069 50 25 50C11.1931 50 0 38.8073 0 25C0 11.1931 11.1931 0 25 0Z"
+                      fill="#F53333"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M36.6102 28.0741C34.2954 27.9508 32.039 27.5433 32.039 27.5433C32.039 27.5433 30.2313 27.2587 30.2268 25.9083C30.2241 25.0178 29.7662 23.348 28.9995 23.2078C28.2327 23.0676 20.6517 23.2078 20.6517 23.2078C20.6517 23.2078 19.8238 23.2633 19.6696 23.6989C19.5154 24.1344 18.9335 26.3996 18.9335 26.3996C18.9335 26.3996 18.5439 27.1865 17.4601 27.3815C16.3661 27.5784 13.0586 28.2484 13.0586 28.2484C13.0586 28.2484 11.7797 28.1018 11.5474 27.0756C11.3154 26.0495 11.3115 23.5648 11.3115 23.5648C11.3115 23.5648 11.4711 22.7379 12.8524 21.8859C14.2332 21.0345 17.466 19.0469 24.6186 19.045C31.2332 19.0438 37.1381 22.0391 37.1381 22.0391C37.1381 22.0391 38.0188 22.7087 38.2375 23.8703C38.456 25.0321 38.8273 28.1924 36.6102 28.0741Z"
+                      fill="white"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>

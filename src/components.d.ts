@@ -10,9 +10,7 @@ export namespace Components {
         "avatarSrc": string;
         "btnText": string;
         "callEndpoint": string;
-        "calleName": string;
         "calleNumber": string;
-        "hideCloseBtn": boolean;
     }
 }
 declare global {
@@ -31,9 +29,7 @@ declare namespace LocalJSX {
         "avatarSrc"?: string;
         "btnText"?: string;
         "callEndpoint"?: string;
-        "calleName"?: string;
         "calleNumber"?: string;
-        "hideCloseBtn"?: boolean;
         "onClosed"?: (event: CustomEvent<any>) => void;
         "onOpened"?: (event: CustomEvent<any>) => void;
     }
