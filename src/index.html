@@ -3,16 +3,39 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Company Website</title>
 
+    <!-- COPY AND PASTE THESE TWO LINES IN YOUR WEBSITE <head> TAG-->
     <script type="module" src="/build/tw-caller.esm.js"></script>
     <script nomodule src="/build/tw-caller.js"></script>
+    <!-- COPY END -->
   </head>
   <body>
-    <tw-caller>
+
+    <!-- ADD CALL WIDGET ANYWHERE IN YOUR PAGE -->
+    <tw-caller api-key="widget-api-key">
       <div slot="call-btn">
-        <call-btn rounded bg-color="white" text-color="green" border-color="green" />
+        <call-btn
+            text="Call Me"
+
+            width="250px"
+            height="45px"
+            padding="10px"
+
+            color="blue"
+            bg-color="white"
+            border-color="blue"
+
+            font-style="roboto"
+            font-weight="bolder"
+            font-size="28px"
+
+            border-radius="round"
+         />
       </div>
     </tw-caller>
+    <!-- COPY END -->
+
+
   </body>
 </html>

@@ -29,13 +29,7 @@ export class TwCaller {
   logoSrc = 'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png';
 
   @Prop()
-  calleNumber = '+917676424299';
-
-  @Prop()
-  callEndpoint = '';
-
-  @Prop()
-  btnText = 'Call Us Now!';
+  apiKey = "api-key";
 
   // methods
   open = () => {
@@ -54,8 +48,8 @@ export class TwCaller {
   twilio: TwilioDevice;
   async startCall() {
     this.twilio = new TwilioDevice();
-    await this.twilio.init();
-    this.twilio.callNumber(this.calleNumber);
+    await this.twilio.init(this.apiKey);
+    this.twilio.call();
 
     this.twilio.device.activeConnection().on('disconnect', () => {
       console.log('the call has ended');

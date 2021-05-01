@@ -8,45 +8,51 @@ import { Component, Host, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class CallBtn {
-
   @Prop()
-  text: string = "Call Now!"
+  text: string = 'Call Now!';
   @Prop()
-  textColor: string = "";
-
+  color: string = '';
   @Prop()
-  font: "Arial" | "Georgia" | "Helvetica" | "Verdana" | "Open Sans" | "Roboto" = "Arial"
+  fontStyle: 'Arial' | 'Georgia' | 'Helvetica' | 'Verdana' | 'Open Sans' | 'Roboto' = 'Arial';
   @Prop()
-  fontWeight: "normal" | "bold" | "bolder";
+  fontWeight: 'normal' | 'bold' | 'bolder';
   @Prop()
   fontSize: string;
   @Prop()
-  opacity: string;
-
+  padding: string = `5px`;
   @Prop()
-  rounded: boolean = false;
-
+  height: string = `30px`;
   @Prop()
-  bgColor: string = "";
-
+  width: string = `120px`;
   @Prop()
-  borderColor: string = "";
+  borderRadius: string = 'sharp';
+  @Prop()
+  bgColor: string = '';
+  @Prop()
+  borderColor: string = '';
 
   render() {
     return (
       <Host>
         <div>
           <slot name="button">
-            <button style={{
-              fontFamily: this.font,
-              fontWeight: this.fontWeight,
-              color: this.textColor,
-              borderRadius: this.rounded ? "24px" : "0",
-              border: `1px solid ${this.borderColor}`,
-              backgroundColor: this.bgColor,
-              fontSize: this.fontSize,
-              opacity: this.opacity,
-            }} class="btn btn--open">{this.text}</button>
+            <button
+              style={{
+                fontFamily: this.fontStyle,
+                fontWeight: this.fontWeight,
+                color: this.color,
+                borderRadius: `${this.borderRadius == "round" ? '24px' : '0px'}`,
+                border: `1px solid ${this.borderColor}`,
+                backgroundColor: this.bgColor,
+                fontSize: this.fontSize,
+                height: this.height,
+                width: this.width,
+                padding: this.padding,
+              }}
+              class="btn btn--open"
+            >
+              {this.text}
+            </button>
           </slot>
         </div>
       </Host>

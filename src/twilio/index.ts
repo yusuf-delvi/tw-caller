@@ -3,10 +3,10 @@ import { Device } from 'twilio-client';
 class TwilioDevice {
   device: Device;
 
-  async init(tokenUrl = 'http://localhost:3000/api/twilio/voice-token') {
+  async init(api_key) {
     return new Promise(async (resolve, reject) => {
       try {
-        const data = await fetch(tokenUrl);
+        const data = await fetch(`http://localhost:3000/api/twilio/voice-token?api_key=${api_key}`);
         const { token } = await data.json();
         const device = new Device(token);
         device.on('ready', () => {
@@ -21,11 +21,9 @@ class TwilioDevice {
     });
   }
 
-  async callNumber(number) {
+  async call() {
     if (this.device)
-      this.device.connect({
-        phoneNumber: number,
-      });
+      this.device.connect();
   }
 
   async hangUp() {

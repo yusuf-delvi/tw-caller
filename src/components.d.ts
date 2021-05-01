@@ -9,13 +9,15 @@ export namespace Components {
     interface CallBtn {
         "bgColor": string;
         "borderColor": string;
-        "font": "Arial" | "Georgia" | "Helvetica" | "Verdana" | "Open Sans" | "Roboto";
+        "borderRadius": string;
+        "color": string;
         "fontSize": string;
-        "fontWeight": "normal" | "bold" | "bolder";
-        "opacity": string;
-        "rounded": boolean;
+        "fontStyle": 'Arial' | 'Georgia' | 'Helvetica' | 'Verdana' | 'Open Sans' | 'Roboto';
+        "fontWeight": 'normal' | 'bold' | 'bolder';
+        "height": string;
+        "padding": string;
         "text": string;
-        "textColor": string;
+        "width": string;
     }
     interface CallDialog {
         "callDuration": number;
@@ -23,9 +25,7 @@ export namespace Components {
         "logoSrc": string;
     }
     interface TwCaller {
-        "btnText": string;
-        "callEndpoint": string;
-        "calleNumber": string;
+        "apiKey": string;
         "logoSrc": string;
     }
 }
@@ -58,13 +58,15 @@ declare namespace LocalJSX {
     interface CallBtn {
         "bgColor"?: string;
         "borderColor"?: string;
-        "font"?: "Arial" | "Georgia" | "Helvetica" | "Verdana" | "Open Sans" | "Roboto";
+        "borderRadius"?: string;
+        "color"?: string;
         "fontSize"?: string;
-        "fontWeight"?: "normal" | "bold" | "bolder";
-        "opacity"?: string;
-        "rounded"?: boolean;
+        "fontStyle"?: 'Arial' | 'Georgia' | 'Helvetica' | 'Verdana' | 'Open Sans' | 'Roboto';
+        "fontWeight"?: 'normal' | 'bold' | 'bolder';
+        "height"?: string;
+        "padding"?: string;
         "text"?: string;
-        "textColor"?: string;
+        "width"?: string;
     }
     interface CallDialog {
         "callDuration"?: number;
@@ -73,9 +75,7 @@ declare namespace LocalJSX {
         "onClose"?: (event: CustomEvent<any>) => void;
     }
     interface TwCaller {
-        "btnText"?: string;
-        "callEndpoint"?: string;
-        "calleNumber"?: string;
+        "apiKey"?: string;
         "logoSrc"?: string;
         "onClosed"?: (event: CustomEvent<any>) => void;
         "onOpened"?: (event: CustomEvent<any>) => void;
