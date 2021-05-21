@@ -7,17 +7,19 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type                                                                          | Default       |
-| ------------- | -------------- | ----------- | ----------------------------------------------------------------------------- | ------------- |
-| `bgColor`     | `bg-color`     |             | `string`                                                                      | `""`          |
-| `borderColor` | `border-color` |             | `string`                                                                      | `""`          |
-| `font`        | `font`         |             | `"Arial" \| "Georgia" \| "Helvetica" \| "Open Sans" \| "Roboto" \| "Verdana"` | `"Arial"`     |
-| `fontSize`    | `font-size`    |             | `string`                                                                      | `undefined`   |
-| `fontWeight`  | `font-weight`  |             | `"bold" \| "bolder" \| "normal"`                                              | `undefined`   |
-| `opacity`     | `opacity`      |             | `string`                                                                      | `undefined`   |
-| `rounded`     | `rounded`      |             | `boolean`                                                                     | `false`       |
-| `text`        | `text`         |             | `string`                                                                      | `"Call Now!"` |
-| `textColor`   | `text-color`   |             | `string`                                                                      | `""`          |
+| Property       | Attribute       | Description | Type                                                                          | Default       |
+| -------------- | --------------- | ----------- | ----------------------------------------------------------------------------- | ------------- |
+| `bgColor`      | `bg-color`      |             | `string`                                                                      | `''`          |
+| `borderColor`  | `border-color`  |             | `string`                                                                      | `''`          |
+| `borderRadius` | `border-radius` |             | `string`                                                                      | `'sharp'`     |
+| `color`        | `color`         |             | `string`                                                                      | `''`          |
+| `fontSize`     | `font-size`     |             | `string`                                                                      | `undefined`   |
+| `fontStyle`    | `font-style`    |             | `"Arial" \| "Georgia" \| "Helvetica" \| "Open Sans" \| "Roboto" \| "Verdana"` | `'Arial'`     |
+| `fontWeight`   | `font-weight`   |             | `"bold" \| "bolder" \| "normal"`                                              | `undefined`   |
+| `height`       | `height`        |             | `string`                                                                      | ``30px``      |
+| `padding`      | `padding`       |             | `string`                                                                      | ``5px``       |
+| `text`         | `text`          |             | `string`                                                                      | `'Call Now!'` |
+| `width`        | `width`         |             | `string`                                                                      | ``120px``     |
 
 
 ## Dependencies

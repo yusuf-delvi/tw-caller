@@ -7,12 +7,10 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default                                                           |
-| -------------- | --------------- | ----------- | -------- | ----------------------------------------------------------------- |
-| `btnText`      | `btn-text`      |             | `string` | `'Call Us Now!'`                                                  |
-| `callEndpoint` | `call-endpoint` |             | `string` | `''`                                                              |
-| `calleNumber`  | `calle-number`  |             | `string` | `'+917676424299'`                                                 |
-| `logoSrc`      | `logo-src`      |             | `string` | `'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png'` |
+| Property  | Attribute  | Description | Type     | Default                                                           |
+| --------- | ---------- | ----------- | -------- | ----------------------------------------------------------------- |
+| `apiKey`  | `api-key`  |             | `string` | `"api-key"`                                                       |
+| `logoSrc` | `logo-src` |             | `string` | `'https://tppwebsolutions.com/wp-content/uploads/logo-demo3.png'` |
 
 
 ## Events
